@@ -38,7 +38,7 @@ return {
 				"lua_ls", -- General Lua
 				"luau_lsp", -- Roblox
 
-				-- "tsserver", -- Typescript
+				"typescript-language-server", -- Typescript
 
 				-- "selene", -- Lua Linter
 				-- "stylua", -- Lua Formatter
