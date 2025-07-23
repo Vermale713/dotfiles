@@ -3,38 +3,38 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.termguicolors = true  -- Use terminal colours
+vim.opt.termguicolors = true -- Use terminal colours
 vim.opt.relativenumber = true -- Show numbers relative to current line
-vim.opt.number = true         -- Show absolute line number
-vim.opt.wrap = false          -- Don't wrap strings
-vim.opt.expandtab = true      -- Make tab use spaces
-vim.opt.smarttab = true       -- Make tab go to next indent
+vim.opt.number = true -- Show absolute line number
+vim.opt.wrap = true -- Wrap if it reaches the end
+vim.opt.expandtab = true -- Make tab use spaces
+vim.opt.smarttab = true -- Make tab go to next indent
 
-vim.opt.shiftwidth = 2        -- Set the shiftwidth to 2 spaces
-vim.opt.tabstop = 2           -- Set the tab to 2 spaces
+vim.opt.shiftwidth = 2 -- Set the shiftwidth to 2 spaces
+vim.opt.tabstop = 2 -- Set the tab to 2 spaces
 
-vim.opt.signcolumn = "auto"   -- idk what this does
+vim.opt.signcolumn = "auto" -- idk what this does
 
 vim.diagnostic.config({
 
-  underline = true,
+	underline = true,
 
-  virtual_text = {
+	virtual_text = {
 
-    prefix = "",
+		prefix = "",
 
-    severity = nil,
+		severity = nil,
 
-    source = "if_many",
+		source = "if_many",
 
-    format = nil,
-  },
+		format = nil,
+	},
 
-  signs = true,
+	signs = true,
 
-  severity_sort = true,
+	severity_sort = true,
 
-  update_in_insert = false,
+	update_in_insert = true,
 })
 
 -- Disable Built-in Objects
