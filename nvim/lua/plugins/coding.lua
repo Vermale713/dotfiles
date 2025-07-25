@@ -27,7 +27,9 @@ return {
 				"selene", -- Lua Linter
 				"stylua", -- Lua Formatter
 				-- JS/TS
-				"eslint", -- Typescript Formatter
+				-- "eslint", -- Typescript Formatter
+				"prettierd", -- Typescript Formatter
+				"prettier", -- Typescript Formatter
 			},
 		},
 	},
@@ -148,6 +150,10 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				luau = { "stylua" },
+				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
