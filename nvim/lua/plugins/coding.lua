@@ -27,9 +27,15 @@ return {
 				"selene", -- Lua Linter
 				"stylua", -- Lua Formatter
 				-- JS/TS
-				-- "eslint", -- Typescript Formatter
 				"prettierd", -- Typescript Formatter
 				"prettier", -- Typescript Formatter
+				-- Python
+				"ruff", -- Python Linter
+				"black", -- Python Formatter
+				-- Yaml
+				"yamlfmt",
+				-- Github Actions
+				"actionlint", -- Github Action Linter
 			},
 		},
 	},
@@ -42,8 +48,9 @@ return {
 
 				"ts_ls", -- Typescript
 
-				-- "selene", -- Lua Linter
-				-- "stylua", -- Lua Formatter
+				"pylsp", -- Python
+
+				"yamlls", -- Yaml
 			},
 			automatic_enable = {
 				exclude = { "luau_lsp" },
@@ -148,12 +155,19 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
+				-- Lua/Luau
 				lua = { "stylua" },
 				luau = { "stylua" },
+				-- Javascript/Typescript
 				typescript = { "prettierd" },
 				typescriptreact = { "prettierd" },
 				javascript = { "prettierd" },
 				javascriptreact = { "prettierd" },
+				-- Python
+				python = { "black" },
+				-- Yaml
+				yaml = { "yamlfmt" },
+				yml = { "yamlfmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
