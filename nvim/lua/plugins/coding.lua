@@ -21,8 +21,11 @@ return {
 	-- Stuff the mason-lspconfig can't install
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		event = "VeryLazy",
 		opts = {
 			ensure_installed = {
+				-- Linter & Formatter
+
 				-- Lua/Luau
 				"selene", -- Lua Linter
 				"stylua", -- Lua Formatter
@@ -36,13 +39,9 @@ return {
 				"yamlfmt",
 				-- Github Actions
 				"actionlint", -- Github Action Linter
-			},
-		},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = {
+
+				-- LSP's
+
 				"lua_ls", -- General Lua
 				"luau_lsp", -- Roblox
 
@@ -52,12 +51,22 @@ return {
 
 				"yamlls", -- Yaml
 			},
+			auto_update = false,
+			run_on_start = true,
+			start_delay = 3000,
+		},
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		event = "VeryLazy",
+		opts = {
+			automatic_installation = false,
 			automatic_enable = {
 				exclude = { "luau_lsp" },
 			},
 		},
 		dependencies = {
-			{ "mason-org/mason.nvim" },
+			"mason-org/mason.nvim",
 			"neovim/nvim-lspconfig",
 		},
 	},
