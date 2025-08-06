@@ -47,6 +47,9 @@ return {
 
 				"ts_ls", -- Typescript
 
+        "cssls", -- CSS
+        "css_variables", -- CSS
+
 				"pylsp", -- Python
 
 				"yamlls", -- Yaml
