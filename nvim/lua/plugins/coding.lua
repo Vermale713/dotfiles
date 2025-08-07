@@ -39,6 +39,8 @@ return {
 				"yamlfmt",
 				-- Github Actions
 				"actionlint", -- Github Action Linter
+				-- Go
+				"goimports", -- Go
 
 				-- LSP's
 
@@ -47,8 +49,10 @@ return {
 
 				"ts_ls", -- Typescript
 
-        "cssls", -- CSS
-        "css_variables", -- CSS
+				"cssls", -- CSS
+				"css_variables", -- CSS
+
+				"gopls", -- Go
 
 				"pylsp", -- Python
 
@@ -180,6 +184,8 @@ return {
 				-- Yaml
 				yaml = { "yamlfmt" },
 				yml = { "yamlfmt" },
+				-- Go
+				go = { "goimports" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
