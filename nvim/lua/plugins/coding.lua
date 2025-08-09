@@ -54,6 +54,8 @@ return {
 
 				"gopls", -- Go
 
+				"jsonls", -- Json
+
 				"pylsp", -- Python
 
 				"yamlls", -- Yaml
