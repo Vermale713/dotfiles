@@ -1,6 +1,18 @@
 return {
 	-- Lsp
 	{
+		"nvim-flutter/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		-- config = true,
+		config = function()
+			require("flutter-tools").setup({})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
@@ -82,6 +94,10 @@ return {
 	{
 		"lopi-py/luau-lsp.nvim",
 		opts = {
+			fflags = {
+				enable_new_solver = true,
+				sync = true,
+			},
 			platform = { type = "roblox" },
 			types = {
 				roblox_security_level = "PluginSecurity",
@@ -190,7 +206,10 @@ return {
 				go = { "goimports" },
 			},
 			format_on_save = {
-				timeout_ms = 500,
+				timeout_ms = 60000,
+				lsp_format = "fallback",
+			},
+			format_after_save = {
 				lsp_format = "fallback",
 			},
 		},

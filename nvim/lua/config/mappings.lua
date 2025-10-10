@@ -1,9 +1,9 @@
 function Map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = false }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.keymap.set(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = false }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Explorer
@@ -29,7 +29,7 @@ Map("v", "J", ":m '>+1<CR>gv=gv")
 Map("v", "K", ":m '<-2<CR>gv=gv")
 Map("v", "<", "<gv")
 Map("v", ">", ">gv")
-Map("n", "<leader>fa", "<CMD>lua require('conform').format()<CR>")
+Map("n", "<leader>fa", "<CMD>lua require('conform').format({async = true})<CR>")
 
 -- Buffers and Tabs
 Map("n", "<TAB>", ":bn<CR>")
