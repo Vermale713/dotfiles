@@ -1,30 +1,38 @@
 return {
-  -- Themes
+	-- Themes
 	{
 		"folke/tokyonight.nvim",
 	},
-  {
-    "catppuccin/nvim", name = "catppuccin",
-  },
-  {
-    "navarasu/onedark.nvim",
-  },
-  {
-    "rose-pine/neovim",
-  },
-  {
-    "rebelot/kanagawa.nvim"
-  },
-  -- Icons
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+	},
+	{
+		"navarasu/onedark.nvim",
+	},
+	{
+		"f4z3r/gruvbox-material.nvim",
+		name = "gruvbox-material",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{
+		"rose-pine/neovim",
+	},
+	{
+		"rebelot/kanagawa.nvim",
+	},
+	-- Icons
 	{
 		"nvim-tree/nvim-web-devicons",
 	},
-  -- Tools
+	-- Tools
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = {
-			"nvim-tree/nvim-web-devicons"
+			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
 			options = {
@@ -41,8 +49,7 @@ return {
 				max_prefix_length = 13,
 				tab_size = 10,
 				show_tab_indicators = true,
-				indicator = {
-				},
+				indicator = {},
 				enforce_regular_tabs = false,
 				view = "multiwindow",
 				show_buffer_close_icons = true,
@@ -50,79 +57,85 @@ return {
 				always_show_bufferline = true,
 				diagnostics = "nvim_lsp",
 				themable = true,
-			}
+			},
 		},
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		dependencies = {
-			"nvim-tree/nvim-web-devicons"
+			"nvim-tree/nvim-web-devicons",
 		},
-    opts = function()
-      local clients_lsp = function()
-        local bufnr = vim.api.nvim_get_current_buf()
+		opts = function()
+			local clients_lsp = function()
+				local bufnr = vim.api.nvim_get_current_buf()
 
-        local clients = vim.lsp.get_clients()
-        if next(clients) == nil then
-          return ""
-        end
+				local clients = vim.lsp.get_clients()
+				if next(clients) == nil then
+					return ""
+				end
 
-        local c = {}
-        for _, client in pairs(clients) do
-          table.insert(c, client.name)
-        end
-        return " " .. table.concat(c, "|")
-      end
+				local c = {}
+				for _, client in pairs(clients) do
+					table.insert(c, client.name)
+				end
+				return " " .. table.concat(c, "|")
+			end
 
 			return {
-        options = {
-          icons_enabled = true,
-          theme = "tokyonight",
-          -- component_separators = { left = '', right = ''},
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
-          disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-          },
-        },
-
-
-      sections = {
-        lualine_a = {{ "mode", icon = "" },},
-        lualine_b = {{
-						"filetype",
-						icon_only = true,
-						padding = { left = 1, right = 0 },
+				options = {
+					icons_enabled = true,
+					theme = "gruvbox-material",
+					-- theme = "gruvbox",
+					-- component_separators = { left = '', right = ''},
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
 					},
-					"filename", },
-        lualine_c = {{
-						"branch",
-						icon = "",
+				},
+
+				sections = {
+					lualine_a = { { "mode", icon = "" } },
+					lualine_b = {
+						{
+							"filetype",
+							icon_only = true,
+							padding = { left = 1, right = 0 },
+						},
+						"filename",
 					},
-					{
-						"diff",
-						symbols = { added = " ", modified = " ", removed = " " },
-						colored = false,
-					},},
-        lualine_x= {{
-						"diagnostics",
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
-						update_in_insert = true,
-					},},
-        lualine_y = {clients_lsp},
-        lualine_z = {{"location",icon = ""}},
-      },
-      inactive_sections = {
-        lualine_a = {"filename"},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_y = {},
-        lualine_x = {},
-        lualine_z = {"location"}
-      },
-    }
-    end
-	}
+					lualine_c = {
+						{
+							"branch",
+							icon = "",
+						},
+						{
+							"diff",
+							symbols = { added = " ", modified = " ", removed = " " },
+							colored = false,
+						},
+					},
+					lualine_x = {
+						{
+							"diagnostics",
+							symbols = { error = " ", warn = " ", info = " ", hint = " " },
+							update_in_insert = true,
+						},
+					},
+					lualine_y = { clients_lsp },
+					lualine_z = { { "location", icon = "" } },
+				},
+				inactive_sections = {
+					lualine_a = { "filename" },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_y = {},
+					lualine_x = {},
+					lualine_z = { "location" },
+				},
+			}
+		end,
+	},
 }
