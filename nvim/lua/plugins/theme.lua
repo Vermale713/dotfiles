@@ -4,9 +4,13 @@ return {
 		"folke/tokyonight.nvim",
 	},
 	{
+		"marko-cerovac/material.nvim",
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 	},
+	{ "savq/melange-nvim" },
 	{
 		"navarasu/onedark.nvim",
 	},
@@ -85,8 +89,10 @@ return {
 			return {
 				options = {
 					icons_enabled = true,
-					theme = "gruvbox-material",
-					-- theme = "gruvbox",
+					-- theme = "gruvbox-material",
+					-- theme = "rose-pine",
+					-- theme = "melange",
+					theme = "material-deep-ocean",
 					-- component_separators = { left = '', right = ''},
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
