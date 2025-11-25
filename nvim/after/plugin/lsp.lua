@@ -97,11 +97,9 @@ require("mason-tool-installer").setup({
 	start_delay = 3000,
 })
 require("mason-lspconfig").setup({
-	opts = {
-		automatic_installation = false,
-		automatic_enable = {
-			exclude = { "luau_lsp" },
-		},
+	automatic_installation = false,
+	automatic_enable = {
+		exclude = { "luau_lsp" },
 	},
 })
 require("blink.cmp").setup({
