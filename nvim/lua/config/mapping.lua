@@ -28,6 +28,8 @@ map("n", "<A-h>", "<C-w>h")
 map("n", "<A-j>", "<C-w>j")
 map("n", "<A-k>", "<C-w>k")
 map("n", "<A-l>", "<C-w>l")
+-- Terminal Navigating
+map("t", "<ESC>", "<C-\\><C-n>")
 map("t", "<A-h>", "<CMD>wincmd h<CR>")
 map("t", "<A-j>", "<CMD>wincmd j<CR>")
 map("t", "<A-k>", "<CMD>wincmd k<CR>")
