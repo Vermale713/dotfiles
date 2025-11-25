@@ -1,3 +1,17 @@
+local rojo_project = vim.fs.root(0, function(name)
+	return name:match(".+%.project%.json$")
+end)
+
+if rojo_project then
+	vim.filetype.add({
+		extension = {
+			lua = function(path)
+				return path:match("%.nvim%.lua$") and "lua" or "luau"
+			end,
+		},
+	})
+end
+
 return {
 	-- Lsp
 	{
@@ -98,7 +112,8 @@ return {
 				enable_new_solver = true,
 				sync = true,
 			},
-			platform = { type = "roblox" },
+			ft = "luau",
+			platform = { type = rojo_project and "roblox" or "standard" },
 			types = {
 				roblox_security_level = "PluginSecurity",
 			},
