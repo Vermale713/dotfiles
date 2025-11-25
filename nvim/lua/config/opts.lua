@@ -2,9 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.clipboard = "unnamedplus"
--- vim.opt.shell = [["C:/Program Files/PowerShell/7/pwsh.exe"]]
--- vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
--- TERMINAL STUFF
+-- TEMRINAL STUFF
 vim.opt.termguicolors = true -- Use terminal colours
 vim.opt.relativenumber = true -- Show numbers relative to current line
 vim.opt.number = true -- Show absolute line number
