@@ -26,6 +26,8 @@ require("paq")({
 		"akinsho/bufferline.nvim",
 		version = "*",
 	},
+	"akinsho/toggleterm.nvim",
+	"nvim-telescope/telescope.nvim",
 	"nvim-lualine/lualine.nvim",
 	"lopi-py/luau-lsp.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
