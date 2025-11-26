@@ -9,7 +9,8 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Explorer
-map("n", "<leader>pv", "<CMD>Ex<CR>")
+-- map("n", "<leader>pv", "<CMD>Ex<CR>") -- netrw
+map("n", "\\", "<CMD>Oil<CR>")
 map("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
 map("n", "<leader>sg", builtin.live_grep, { desc = "Telescope live grep" })
 map("n", "<leader>sb", builtin.buffers, { desc = "Telescope open buffers" })

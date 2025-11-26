@@ -22,6 +22,7 @@ require("paq")({
 	"rafamadriz/friendly-snippets",
 	"rebelot/kanagawa.nvim",
 	"famiu/bufdelete.nvim",
+	"stevearc/oil.nvim",
 	-- Packages
 	{
 		"akinsho/bufferline.nvim",
