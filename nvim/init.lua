@@ -21,6 +21,7 @@ require("paq")({
 	"L3MON4D3/LuaSnip",
 	"rafamadriz/friendly-snippets",
 	"rebelot/kanagawa.nvim",
+	"famiu/bufdelete.nvim",
 	-- Packages
 	{
 		"akinsho/bufferline.nvim",

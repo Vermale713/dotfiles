@@ -41,3 +41,4 @@ map("n", "<leader>fa", "<CMD>lua require('conform').format({async = true})<CR>")
 -- Buffers and Tabs
 map("n", "<TAB>", "<CMD>bn<CR>")
 map("n", "<S-TAB>", "<CMD>bp<CR>")
+map("n", "<leader>bd", "<CMD>Bdelete<CR>")
