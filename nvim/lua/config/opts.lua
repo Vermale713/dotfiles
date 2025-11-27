@@ -11,7 +11,7 @@ vim.opt.expandtab = true -- Make tab use spaces
 vim.opt.smarttab = true -- Make tab go to next indent
 vim.opt.shiftwidth = 2 -- Set the shiftwidth to 2 spaces
 vim.opt.tabstop = 2 -- Set the tab to 2 spaces
-vim.opt.signcolumn = "auto" -- idk what this does
+vim.opt.signcolumn = "yes" -- make the signcolumn always show
 
 vim.diagnostic.config({
 

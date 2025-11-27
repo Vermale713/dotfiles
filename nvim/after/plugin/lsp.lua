@@ -18,7 +18,7 @@ if rojo_project then
 	})
 end
 
-vim.lsp.config("luau-lsp", {
+require("luau-lsp").setup({
 	fflags = {
 		enable_new_solver = true,
 		sync = true,
@@ -37,6 +37,9 @@ vim.lsp.config("luau-lsp", {
 		enabled = true,
 		port = 3667,
 	},
+})
+
+vim.lsp.config("luau-lsp", {
 	settings = {
 		["luau-lsp"] = {
 			ignoreGlobs = ignore_globs,

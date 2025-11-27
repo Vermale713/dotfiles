@@ -19,6 +19,8 @@ map("n", "<leader>gc", builtin.git_commits, { desc = "Telescope git commits" })
 map("n", "<leader>gbc", builtin.git_bcommits, { desc = "Telescope git commits" })
 map("n", "<leader>gbr", builtin.git_branches, { desc = "Telescope git commits" })
 map("n", "<leader>gs", builtin.git_status, { desc = "Telescope git commits" })
+-- LSP
+map("n", "<leader>sd", builtin.diagnostics, { desc = "Telescope open diagnostics" })
 -- Colorscheme
 map("n", "<leader>sc", builtin.colorscheme, { desc = "Telescope colorschemes" })
 -- Window Splits
