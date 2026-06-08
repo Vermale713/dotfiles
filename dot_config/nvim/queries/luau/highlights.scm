@@ -85,6 +85,10 @@
     "end"
   ] @keyword.function)
 
+(const_declaration "function" @keyword)
+(const_declaration "end" @keyword)
+(const_declaration name: (identifier) @function)
+
 (function_definition
   [
     "function"
