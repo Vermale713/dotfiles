@@ -21,7 +21,7 @@ end
 vim.opt.termguicolors = true -- Use terminal colours
 vim.opt.relativenumber = true -- Show numbers relative to current line
 vim.opt.number = true -- Show absolute line number
-vim.opt.wrap = true -- Wrap if it reaches the end
+vim.opt.wrap = false -- do no wrap if it reaches the end
 vim.opt.expandtab = true -- Make tab use spaces
 vim.opt.smarttab = true -- Make tab go to next indent
 vim.opt.shiftwidth = 4 -- Set the shiftwidth to 4 spaces
