@@ -3,12 +3,32 @@ vim.pack.add({
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/numToStr/Comment.nvim" },
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 })
 
 -- SETUP PLUGINS
+require("Comment").setup({
+	toggler = {
+		---Line-comment toggle keymap
+		line = "q",
+	},
+	---LHS of operator-pending mappings in NORMAL and VISUAL mode
+	opleader = {
+		line = "q",
+	},
+	---LHS of extra mappings
+	extra = {
+		above = "gcO",
+		---Add comment on the line below
+		below = "gco",
+		---Add comment at the end of line
+		eol = "gcA",
+	},
+})
+
 local t_builtin = require("telescope.builtin")
 -- File Picker
 vim.keymap.set("n", "<leader><leader>", t_builtin.find_files, { desc = "Telescope find files" })

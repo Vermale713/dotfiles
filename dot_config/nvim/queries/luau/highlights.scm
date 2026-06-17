@@ -157,6 +157,9 @@
   (type) @type.definition
   "=")
 
+(type_definition "function" @keyword.function)
+(type_definition "end" @keyword.function)
+(type_definition name: (identifier) @function)
 ; Constants
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))

@@ -62,6 +62,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		luau = { "stylua" },
 		rust = { "rustfmt", lsp_format = "fallback" },
+		zig = { "zig", "zigfmt" },
 	},
 })
 vim.keymap.set("n", "<leader>fa", function()
@@ -77,22 +78,26 @@ require("luau-lsp").setup({
 	types = {
 		roblox_security_level = "PluginSecurity",
 	},
-	completion = {
-		enabled = true,
-		autocompleteEnd = true,
-		imports = {
-			enabled = true,
-			useConst = true,
-			suggestServices = true,
-			suggestRequires = true,
-			requireStyle = "alwaysAbsolute",
-			separateGroupsWithLine = true,
-			ignoreGlobs = {
-				"**/_Index/**",
-				"**/.pesde/**",
-			},
-		},
-	},
+	-- completion = {
+	-- 	enabled = true,
+	-- 	autocompleteEnd = true,
+	-- 	imports = {
+	-- 		enabled = true,
+	-- 		useConst = true,
+	-- 		suggestServices = true,
+	-- 		suggestRequires = true,
+	-- 		-- requireStyle = "auto",
+	-- 		requireStyle = "alwaysRelative",
+	-- 		-- requireStyle = "alwaysAbsolute",
+	--            stringRequires = true,
+	--            -- stringRequires = false,
+	-- 		separateGroupsWithLine = true,
+	-- 		ignoreGlobs = {
+	-- 			"**/_Index/**",
+	-- 			"**/.pesde/**",
+	-- 		},
+	-- 	},
+	-- },
 	sourcemap = {
 		-- based on https://argon.wiki/docs/commands/cli#sourcemap
 		enabled = true,
