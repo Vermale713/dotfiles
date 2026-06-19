@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>od", "<Cmd>lua vim.diagnostic.open_float()<Cr>")
+vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 -- Window splits
 vim.keymap.set("n", "<A-v>", "<C-w>v")
 vim.keymap.set("n", "<A-s>", "<C-w>s")

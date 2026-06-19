@@ -19,11 +19,11 @@ return {
 					useConst = true,
 					suggestServices = true,
 					suggestRequires = true,
-					requireStyle = "alwaysAbsolute",
-					-- requireStyle = "alwaysRelative",
-					-- stringRequires = {
-					-- 	enabled = true,
-					-- },
+					-- requireStyle = "alwaysAbsolute",
+					requireStyle = "alwaysRelative",
+					stringRequires = {
+						enabled = true,
+					},
 					separateGroupsWithLine = true,
 					ignoreGlobs = {
 						"**/_Index/**",

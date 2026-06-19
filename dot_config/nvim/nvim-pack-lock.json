@@ -20,6 +20,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "exrc.nvim": {
+      "rev": "4346164895f432f361e453d837b612e6c7cbe3e6",
+      "src": "https://github.com/jedrzejboczar/exrc.nvim"
+    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -55,6 +59,10 @@
     "telescope.nvim": {
       "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "vide-autocomplete.nvim": {
+      "rev": "13e9bf3da3cbd34408a7de978af0b1d6b6fa578b",
+      "src": "https://github.com/unsigned-rbx/vide-autocomplete.nvim"
     }
   }
 }

@@ -1,16 +1,27 @@
 -- INSTALL PLUGINS
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/jedrzejboczar/exrc.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/lopi-py/luau-lsp.nvim" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
+	-- ROBLOX
+	{ src = "https://github.com/unsigned-rbx/vide-autocomplete.nvim" },
+	--
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 })
 
 -- SETUP PLUGINS
+require("exrc").setup({
+	lsp = {
+		auto_setup = true, -- Automatically configure lspconfig to register on_new_config
+	},
+})
+
+
 local cmp = require("blink.cmp")
 
 cmp.build():pwait()
@@ -78,26 +89,26 @@ require("luau-lsp").setup({
 	types = {
 		roblox_security_level = "PluginSecurity",
 	},
-	-- completion = {
-	-- 	enabled = true,
-	-- 	autocompleteEnd = true,
-	-- 	imports = {
-	-- 		enabled = true,
-	-- 		useConst = true,
-	-- 		suggestServices = true,
-	-- 		suggestRequires = true,
-	-- 		-- requireStyle = "auto",
-	-- 		requireStyle = "alwaysRelative",
-	-- 		-- requireStyle = "alwaysAbsolute",
-	--            stringRequires = true,
-	--            -- stringRequires = false,
-	-- 		separateGroupsWithLine = true,
-	-- 		ignoreGlobs = {
-	-- 			"**/_Index/**",
-	-- 			"**/.pesde/**",
-	-- 		},
-	-- 	},
-	-- },
+	completion = {
+		-- 	enabled = true,
+		autocompleteEnd = true,
+		-- 	imports = {
+		-- 		enabled = true,
+		-- 		useConst = true,
+		-- 		suggestServices = true,
+		-- 		suggestRequires = true,
+		-- 		-- requireStyle = "auto",
+		-- 		requireStyle = "alwaysRelative",
+		-- 		-- requireStyle = "alwaysAbsolute",
+		--            stringRequires = true,
+		--            -- stringRequires = false,
+		-- 		separateGroupsWithLine = true,
+		-- 		ignoreGlobs = {
+		-- 			"**/_Index/**",
+		-- 			"**/.pesde/**",
+		-- 		},
+		-- 	},
+	},
 	sourcemap = {
 		-- based on https://argon.wiki/docs/commands/cli#sourcemap
 		enabled = true,

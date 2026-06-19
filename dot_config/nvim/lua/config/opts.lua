@@ -6,6 +6,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- NEOVIM STUFF
 vim.opt.autoread = true -- Auto reload buffer
+-- vim.opt.exrc = true -- Project local settings
 
 -- SHELL STUFF
 if sysname == "Windows_NT" then
