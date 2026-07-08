@@ -3,6 +3,10 @@ return {
 	root_markers = { ".luaurc" },
 	settings = {
 		["luau-lsp"] = {
+			ignoreGlobs = {
+				"**/_Index/**",
+				"**/.pesde/**",
+			},
 			fflags = {
 				enable_new_solver = true, -- enables the fflags required for luau's new type solver
 				sync = true, -- sync currently enabled fflags with roblox's published fflags
@@ -19,8 +23,8 @@ return {
 					useConst = true,
 					suggestServices = true,
 					suggestRequires = true,
-					-- requireStyle = "alwaysAbsolute",
-					requireStyle = "alwaysRelative",
+					requireStyle = "alwaysAbsolute",
+					-- requireStyle = "alwaysRelative",
 					stringRequires = {
 						enabled = true,
 					},

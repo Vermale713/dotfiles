@@ -1,7 +1,6 @@
 -- INSTALL PLUGINS
-vim.pack.add({
+vim.pack.add {
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/jedrzejboczar/exrc.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/lopi-py/luau-lsp.nvim" },
@@ -12,20 +11,13 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-})
+}
 
 -- SETUP PLUGINS
-require("exrc").setup({
-	lsp = {
-		auto_setup = true, -- Automatically configure lspconfig to register on_new_config
-	},
-})
-
-
-local cmp = require("blink.cmp")
+local cmp = require "blink.cmp"
 
 cmp.build():pwait()
-cmp.setup({
+cmp.setup {
 	keymap = {
 		["<C-s>"] = { "show", "fallback" },
 		["<Tab>"] = {
@@ -46,6 +38,15 @@ cmp.setup({
 		keymap = {
 			preset = "super-tab",
 		},
+		completion = {
+			menu = {
+				auto_show = function(ctx)
+					return vim.fn.getcmdtype() == ":"
+					-- enable for inputs as well, with:
+					-- or vim.fn.getcmdtype() == '@'
+				end,
+			},
+		},
 	},
 
 	appearance = {
@@ -63,24 +64,27 @@ cmp.setup({
 			auto_show_delay_ms = 0,
 		},
 	},
-	sources = { default = { "lsp", "path", "snippets", "buffer" } },
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer", "vide" },
+		providers = { vide = { name = "Vide", module = "vide.source" } },
+	},
 
 	fuzzy = { implementation = "rust" },
-})
+}
 
-require("conform").setup({
+require("conform").setup {
 	formatters_by_ft = {
 		lua = { "stylua" },
 		luau = { "stylua" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		zig = { "zig", "zigfmt" },
 	},
-})
+}
 vim.keymap.set("n", "<leader>fa", function()
-	require("conform").format({})
+	require("conform").format {}
 end)
 
-require("luau-lsp").setup({
+require("luau-lsp").setup {
 	fflags = {
 		enable_new_solver = true, -- enables the fflags required for luau's new type solver
 		sync = true, -- sync currently enabled fflags with roblox's published fflags
@@ -118,11 +122,11 @@ require("luau-lsp").setup({
 		enabled = true,
 		port = 3667,
 	},
-})
+}
 
-require("mason").setup({})
-require("mason-lspconfig").setup({
+require("mason").setup {}
+require("mason-lspconfig").setup {
 	automatic_enable = {
 		exclude = { "luau_lsp" },
 	},
-})
+}

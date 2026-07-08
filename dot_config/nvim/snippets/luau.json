@@ -1,0 +1,18 @@
+{
+    "service_module": {
+        "prefix": "!module",
+        "body": [
+            "-- SERVICES\n",
+            "-- IMPORTED MODULES\n",
+            "-- TYPES\n",
+            "-- ALIASES\n",
+            "-- CONSTANTS\n",
+            "-- PRIVATE STATE\n",
+            "-- PRIVATE FUNCTIONS\n",
+            "-- PRIVATE MODULE\n",
+            "-- PUBLIC MODULE",
+            "const ${1:Module} = {}\n",
+            "return ${1:Module}"
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "luau", "path": "./luau.json" },
+      { "language": "all", "path": "./all.json" }
+    ]
+  }
+}

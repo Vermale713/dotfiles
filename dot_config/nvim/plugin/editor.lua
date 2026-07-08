@@ -1,16 +1,24 @@
 -- INSTALL PLUGINS
-vim.pack.add({
+vim.pack.add {
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
+	{ src = "https://github.com/navarasu/onedark.nvim" },
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-})
+	{ src = "https://github.com/kdheepak/lazygit.nvim" },
+}
 
 -- SETUP PLUGINS
-require("Comment").setup({
+vim.keymap.set("n", "<leader>gl", "<Cmd>LazyGit<Cr>", { desc = "Open LazyGit" })
+
+require("onedark").setup {
+	style = "deep",
+}
+
+require("Comment").setup {
 	toggler = {
 		---Line-comment toggle keymap
 		line = "q",
@@ -27,16 +35,16 @@ require("Comment").setup({
 		---Add comment at the end of line
 		eol = "gcA",
 	},
-})
+}
 
-local t_builtin = require("telescope.builtin")
+local t_builtin = require "telescope.builtin"
 -- File Picker
 vim.keymap.set("n", "<leader><leader>", t_builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>lg", t_builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", t_builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>ht", t_builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>ff", function()
-	t_builtin.find_files({ hidden = true })
+	t_builtin.find_files { hidden = true }
 end, { desc = "Telescope find all files" })
 -- Git
 vim.keymap.set("n", "<leader>gc", t_builtin.git_commits, { desc = "Telescope git commits" })
@@ -103,7 +111,7 @@ refresh.callback = function(...)
 	orig_refresh(...)
 end
 
-require("oil").setup({
+require("oil").setup {
 	default_file_explorer = true,
 	columns = {
 		"icon",
@@ -182,15 +190,15 @@ require("oil").setup({
 			return status.ignored[name] == true
 		end,
 	},
-})
+}
 
 vim.api.nvim_create_user_command("Daylight", function()
-	vim.cmd("colorscheme kanagawa-lotus")
+	vim.cmd "colorscheme kanagawa-lotus"
 end, { desc = "daylight config" })
 vim.api.nvim_create_user_command("Midnight", function()
-	vim.cmd("colorscheme kanagawa-wave")
+	vim.cmd "colorscheme kanagawa-wave"
 end, { desc = "midnight config" })
 vim.api.nvim_create_user_command("Latenight", function()
-	vim.cmd("colorscheme kanagawa-dragon")
+	vim.cmd "colorscheme kanagawa-dragon"
 end, { desc = "latenight config" })
-vim.cmd("colorscheme kanagawa")
+vim.cmd "colorscheme onedark"

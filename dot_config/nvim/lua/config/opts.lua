@@ -6,7 +6,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- NEOVIM STUFF
 vim.opt.autoread = true -- Auto reload buffer
--- vim.opt.exrc = true -- Project local settings
+vim.opt.exrc = true -- Project local settings
 
 -- SHELL STUFF
 if sysname == "Windows_NT" then
@@ -29,7 +29,7 @@ vim.opt.shiftwidth = 4 -- Set the shiftwidth to 4 spaces
 vim.opt.tabstop = 4 -- Set the tab to 4 spaces
 vim.opt.signcolumn = "yes" -- make the signcolumn always show
 
-vim.diagnostic.config({
+vim.diagnostic.config {
 
 	underline = true,
 
@@ -49,7 +49,7 @@ vim.diagnostic.config({
 	severity_sort = true,
 
 	update_in_insert = true,
-})
+}
 
 -- Disable Built-in Objects
 --vim.g.loaded_netrwPlugin = 1
