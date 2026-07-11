@@ -17,3 +17,4 @@ vim.lsp.config("*", {
 require("config.keymap")
 require("config.opts")
 require("config.autocmd")
+require("config.lockin").setup()

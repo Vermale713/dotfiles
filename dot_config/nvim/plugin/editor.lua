@@ -2,9 +2,13 @@
 vim.pack.add {
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 	{ src = "https://github.com/navarasu/onedark.nvim" },
+	{ src = "https://github.com/dchinmay2/alabaster.nvim" },
+	{ src = "https://github.com/zootedb0t/citruszest.nvim" },
+	{ src = "https://github.com/kvrohit/rasmus.nvim" },
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
+	{ src = "https://github.com/shortcuts/no-neck-pain.nvim" },
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -12,7 +16,24 @@ vim.pack.add {
 }
 
 -- SETUP PLUGINS
-vim.keymap.set("n", "<leader>gl", "<Cmd>LazyGit<Cr>", { desc = "Open LazyGit" })
+vim.fn.mkdir(vim.fn.stdpath("data") .. "/notes", "p")
+require("no-neck-pain").setup({
+  width = 100,
+  buffers = {
+    scratchPad = {
+      enabled = true,
+      pathToFile = vim.fn.stdpath("data") .. "/notes/scratchpad.norg",
+    },
+  },
+})require("no-neck-pain").setup({
+  width = 100,
+  buffers = {
+    scratchPad = {
+      enabled = true,
+      pathToFile = vim.fn.stdpath("data") .. "/notes/scratchpad.norg", -- pick your path
+    },
+  },
+})
 
 require("onedark").setup {
 	style = "deep",
@@ -36,6 +57,12 @@ require("Comment").setup {
 		eol = "gcA",
 	},
 }
+
+vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>Centerpad<cr>", { silent = true, noremap = true })
+
+local comment_ft = require "Comment.ft"
+
+comment_ft.set("zig", "//%s")
 
 local t_builtin = require "telescope.builtin"
 -- File Picker
@@ -191,14 +218,3 @@ require("oil").setup {
 		end,
 	},
 }
-
-vim.api.nvim_create_user_command("Daylight", function()
-	vim.cmd "colorscheme kanagawa-lotus"
-end, { desc = "daylight config" })
-vim.api.nvim_create_user_command("Midnight", function()
-	vim.cmd "colorscheme kanagawa-wave"
-end, { desc = "midnight config" })
-vim.api.nvim_create_user_command("Latenight", function()
-	vim.cmd "colorscheme kanagawa-dragon"
-end, { desc = "latenight config" })
-vim.cmd "colorscheme onedark"
