@@ -14,7 +14,8 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-require("config.keymap")
-require("config.opts")
-require("config.autocmd")
+require "config.keymap"
+require "config.opts"
+require "config.autocmd"
 require("config.lockin").setup()
+require("config.twitch").setup()

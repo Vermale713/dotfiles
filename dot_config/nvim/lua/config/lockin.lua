@@ -2,8 +2,12 @@ local M = {}
 
 local state_file = vim.fn.stdpath "data" .. "/lockin_state.json"
 
-local LOCKIN_THEME = "alabaster" -- swap for whatever minimal colorscheme you use
+local LOCKIN_THEME = "lockin"
 local NORMAL_THEME = "citruszest"
+
+-- our own source of truth for whether NNP is currently on,
+-- so we never have to guess/toggle blind
+local nnp_enabled = false
 
 local function write_state(locked_in)
 	local f = io.open(state_file, "w")
@@ -27,37 +31,36 @@ local function read_state()
 	return { locked_in = false }
 end
 
-local function nnp_toggle()
-	vim.cmd "NoNeckPain"
+-- only toggles NNP if it isn't already in the desired state
+local function set_nnp(enabled)
+	if enabled == nnp_enabled then
+		return
+	end
+	local ok, err = pcall(vim.cmd, "NoNeckPain")
+	if not ok then
+		vim.notify("lockin: NoNeckPain toggle failed: " .. err, vim.log.levels.ERROR)
+		return
+	end
+	nnp_enabled = enabled
+end
+
+local function apply(locked_in, verb)
+	local theme = locked_in and LOCKIN_THEME or NORMAL_THEME
+	local ok, err = pcall(vim.cmd.colorscheme, theme)
+	if not ok then
+		vim.notify(verb .. ": colorscheme failed: " .. err, vim.log.levels.ERROR)
+	end
+	set_nnp(locked_in)
+	write_state(locked_in)
 end
 
 function M.lock_in()
-	local ok, err = pcall(vim.cmd.colorscheme, LOCKIN_THEME)
-	if not ok then
-		vim.notify("lockin: colorscheme failed: " .. err, vim.log.levels.ERROR)
-	end
-
-	local ok2, err2 = pcall(nnp_toggle)
-	if not ok2 then
-		vim.notify("lockin: NoNeckPain toggle failed: " .. err2, vim.log.levels.ERROR)
-	end
-
-	write_state(true)
+	apply(true, "lockin")
 	print "Locked in."
 end
 
 function M.chill()
-	local ok, err = pcall(vim.cmd.colorscheme, NORMAL_THEME)
-	if not ok then
-		vim.notify("chill: colorscheme failed: " .. err, vim.log.levels.ERROR)
-	end
-
-	local ok2, err2 = pcall(nnp_toggle)
-	if not ok2 then
-		vim.notify("chill: NoNeckPain toggle failed: " .. err2, vim.log.levels.ERROR)
-	end
-
-	write_state(false)
+	apply(false, "chill")
 	print "Chilling."
 end
 
@@ -68,24 +71,7 @@ function M.setup()
 	local state = read_state()
 
 	vim.schedule(function()
-		if state.locked_in then
-			local ok, err = pcall(vim.cmd.colorscheme, LOCKIN_THEME)
-			if not ok then
-				vim.notify("lockin: colorscheme failed: " .. err, vim.log.levels.ERROR)
-			end
-			-- NNP starts disabled on every fresh launch, so toggling once here
-			-- reliably brings it to "enabled" — never call this more than once per boot.
-			local ok2, err2 = pcall(nnp_toggle)
-			if not ok2 then
-				vim.notify("lockin: NoNeckPain toggle failed: " .. err2, vim.log.levels.ERROR)
-			end
-		else
-			local ok, err = pcall(vim.cmd.colorscheme, NORMAL_THEME)
-			if not ok then
-				vim.notify("chill: colorscheme failed: " .. err, vim.log.levels.ERROR)
-			end
-			-- NNP is already disabled by default at startup, nothing to do.
-		end
+		apply(state.locked_in, "startup")
 	end)
 end
 

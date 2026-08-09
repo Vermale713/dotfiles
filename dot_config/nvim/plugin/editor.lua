@@ -16,24 +16,25 @@ vim.pack.add {
 }
 
 -- SETUP PLUGINS
-vim.fn.mkdir(vim.fn.stdpath("data") .. "/notes", "p")
-require("no-neck-pain").setup({
-  width = 100,
-  buffers = {
-    scratchPad = {
-      enabled = true,
-      pathToFile = vim.fn.stdpath("data") .. "/notes/scratchpad.norg",
-    },
-  },
-})require("no-neck-pain").setup({
-  width = 100,
-  buffers = {
-    scratchPad = {
-      enabled = true,
-      pathToFile = vim.fn.stdpath("data") .. "/notes/scratchpad.norg", -- pick your path
-    },
-  },
-})
+vim.fn.mkdir(vim.fn.stdpath "data" .. "/notes", "p")
+require("no-neck-pain").setup {
+	width = 100,
+	buffers = {
+		scratchPad = {
+			enabled = true,
+			pathToFile = vim.fn.stdpath "data" .. "/notes/scratchpad.norg",
+		},
+	},
+}
+require("no-neck-pain").setup {
+	width = 100,
+	buffers = {
+		scratchPad = {
+			enabled = true,
+			pathToFile = vim.fn.stdpath "data" .. "/notes/scratchpad.norg", -- pick your path
+		},
+	},
+}
 
 require("onedark").setup {
 	style = "deep",
@@ -58,7 +59,7 @@ require("Comment").setup {
 	},
 }
 
-vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>Centerpad<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>NoNeckPain<cr>", { silent = true, noremap = true })
 
 local comment_ft = require "Comment.ft"
 
@@ -78,6 +79,7 @@ vim.keymap.set("n", "<leader>gc", t_builtin.git_commits, { desc = "Telescope git
 vim.keymap.set("n", "<leader>gf", t_builtin.git_files, { desc = "Telescope git files" })
 vim.keymap.set("n", "<leader>gb", t_builtin.git_branches, { desc = "Telescope git branches" })
 vim.keymap.set("n", "<leader>gs", t_builtin.git_status, { desc = "Telescope git status" })
+vim.keymap.set("n", "<leader>gl", "<Cmd>LazyGit<Cr>", { desc = "Telescope git status" })
 -- Lsp
 vim.keymap.set("n", "<leader>sd", t_builtin.diagnostics, { desc = "Telescope open diagnostics" })
 vim.keymap.set("n", "<leader>gf", t_builtin.git_files, { desc = "Telescope git files" })
