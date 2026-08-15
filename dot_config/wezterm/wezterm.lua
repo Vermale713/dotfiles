@@ -24,6 +24,16 @@ table.insert(keys, {
 	action = action.SpawnTab("CurrentPaneDomain"),
 })
 table.insert(keys, {
+	key = "-",
+	mods = "CTRL|ALT",
+	action = action.MoveTabRelative(-1),
+})
+table.insert(keys, {
+	key = "+",
+	mods = "CTRL|ALT",
+	action = action.MoveTabRelative(1),
+})
+table.insert(keys, {
 	key = "V",
 	mods = "CTRL",
 	action = action.PasteFrom("Clipboard"),
@@ -61,5 +71,7 @@ wezterm.on("gui-startup", function()
 	local _, _, window = mux.spawn_window({})
 	window:gui_window():maximize()
 end)
+
+config.default_domain = "WSL:FedoraLinux-44"
 
 return config
