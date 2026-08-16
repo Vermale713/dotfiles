@@ -1,56 +1,56 @@
-; Scopes
+(source_file) @local.scope
+
 [
-  (chunk)
-  (do_statement)
-  (while_statement)
-  (repeat_statement)
-  (if_statement)
-  (for_statement)
+  (block)
   (function_declaration)
-  (function_definition)
+  (local_function_declaration)
+  (const_function_declaration)
+  (function_expression)
+  (type_function_declaration)
 ] @local.scope
 
-; References
+(binding name: (identifier) @local.definition @local.definition.variable)
+((local_declaration
+  bindings: (binding_list
+    .
+    (binding name: (identifier) @local.definition @local.definition.namespace)
+    .)
+  values: (expression_list
+    .
+    (call_expression function: (identifier) @_require)
+    .))
+  (#eq? @_require "require"))
+(const_declaration
+  bindings: (binding_list
+    (binding name: (identifier) @local.definition @local.definition.constant)))
+(parameter name: (identifier) @local.definition @local.definition.variable.parameter)
+(declare_parameter name: (identifier) @local.definition @local.definition.variable.parameter)
+
+(local_function_declaration name: (identifier) @local.definition @local.definition.function)
+(const_function_declaration name: (identifier) @local.definition @local.definition.function)
+(class_declaration name: (identifier) @local.definition @local.definition.type)
+
 (identifier) @local.reference
 
-; Definitions
-(assignment_statement
-  (variable_list
-    (identifier) @local.definition.var))
-
-(assignment_statement
-  (variable_list
-    (dot_index_expression
-      .
-      (_) @local.definition.associated
-      (identifier) @local.definition.var)))
-
-((function_declaration
-  name: (identifier) @local.definition.function)
-  (#set! definition.function.scope "parent"))
-
-((function_declaration
-  name:
-    (dot_index_expression
-      .
-      (_) @local.definition.associated
-      (identifier) @local.definition.function))
-  (#set! definition.method.scope "parent"))
-
-((function_declaration
-  name:
-    (method_index_expression
-      .
-      (_) @local.definition.associated
-      (identifier) @local.definition.method))
-  (#set! definition.method.scope "parent"))
-
-(for_generic_clause
-  (variable_list
-    (identifier) @local.definition.var))
-
-(for_numeric_clause
-  name: (identifier) @local.definition.var)
-
-(parameter
-  (identifier) @local.definition.parameter)
+(call_expression function: (identifier) @_context)
+(type_instantiation_expression function: (identifier) @_context)
+(method_call_expression
+  receiver: (identifier) @_context
+  method: (identifier) @_context)
+(type_instantiation_expression
+  receiver: (identifier) @_context
+  method: (identifier) @_context)
+(field_expression
+  table: (identifier) @_context
+  field: (identifier) @_context)
+(table_field key: (identifier) @_context)
+(type_reference module: (identifier) @_context)
+(type_reference name: (identifier) @_context)
+(class_reference module: (identifier) @_context)
+(type_alias_declaration name: (identifier) @_context)
+(function_name
+  name: (identifier) @_context
+  field: (identifier) @_context)
+(function_name
+  name: (identifier) @_context
+  method: (identifier) @_context)

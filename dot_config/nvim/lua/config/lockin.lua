@@ -3,7 +3,7 @@ local M = {}
 local state_file = vim.fn.stdpath "data" .. "/lockin_state.json"
 
 local LOCKIN_THEME = "lockin"
-local NORMAL_THEME = "citruszest"
+local NORMAL_THEME = "lockin"
 
 -- our own source of truth for whether NNP is currently on,
 -- so we never have to guess/toggle blind
