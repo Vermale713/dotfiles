@@ -77,7 +77,8 @@ require("conform").setup {
 		lua = { "stylua" },
 		luau = { "stylua" },
 		rust = { "rustfmt", lsp_format = "fallback" },
-		zig = { "zig", "zigfmt" },
+		zig = { "zigfmt" },
+		toml = { "taplo" },
 	},
 }
 vim.keymap.set("n", "<leader>fa", function()

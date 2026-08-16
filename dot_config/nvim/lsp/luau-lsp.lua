@@ -6,6 +6,7 @@ return {
 			ignoreGlobs = {
 				"**/_Index/**",
 				"**/.pesde/**",
+				"**/.lpm/**",
 			},
 			fflags = {
 				enable_new_solver = true, -- enables the fflags required for luau's new type solver
@@ -32,6 +33,7 @@ return {
 					ignoreGlobs = {
 						"**/_Index/**",
 						"**/.pesde/**",
+                        "**/.lpm/**",
 					},
 				},
 			},

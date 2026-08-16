@@ -4,10 +4,6 @@
       "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
       "src": "https://github.com/numToStr/Comment.nvim"
     },
-    "LuaSnip": {
-      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
-      "src": "https://github.com/L3MON4D3/LuaSnip"
-    },
     "alabaster.nvim": {
       "rev": "b902c73fabefc13583bfc0c18b28950ea8f6244f",
       "src": "https://github.com/dchinmay2/alabaster.nvim"
@@ -24,10 +20,6 @@
       "rev": "b127d48bf8e9ac9cf41f6e0fbead317503f76558",
       "src": "https://github.com/saghen/blink.lib"
     },
-    "centerpad.nvim": {
-      "rev": "666641d02fd8c58ac401c1fb6bf596bb00b815fb",
-      "src": "https://github.com/smithbm2316/centerpad.nvim"
-    },
     "citruszest.nvim": {
       "rev": "e6fed9ec3d0ac190b1387379c138ba5e23a1f4f9",
       "src": "https://github.com/zootedb0t/citruszest.nvim"
@@ -35,10 +27,6 @@
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
-    },
-    "exrc.nvim": {
-      "rev": "4346164895f432f361e453d837b612e6c7cbe3e6",
-      "src": "https://github.com/jedrzejboczar/exrc.nvim"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",

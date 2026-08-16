@@ -1,8 +1,3 @@
-vim.treesitter.language.add("luau", {
-	path = "C:/Users/Vermale/.config/nvim/parser/luau.dll",
-})
-vim.treesitter.language.register("luau", "luau")
-
 vim.lsp.config("*", {
 	capabilities = {
 		workspace = {
@@ -17,5 +12,8 @@ vim.lsp.config("*", {
 require "config.keymap"
 require "config.opts"
 require "config.autocmd"
+require "config.cmds"
 require("config.lockin").setup()
 require("config.twitch").setup()
+
+vim.bo.syntax = "on"
