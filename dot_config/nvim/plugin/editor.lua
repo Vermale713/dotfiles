@@ -7,7 +7,6 @@ vim.pack.add {
 	{ src = "https://github.com/kvrohit/rasmus.nvim" },
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/shortcuts/no-neck-pain.nvim" },
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -40,30 +39,7 @@ require("onedark").setup {
 	style = "deep",
 }
 
-require("Comment").setup {
-	toggler = {
-		---Line-comment toggle keymap
-		line = "q",
-	},
-	---LHS of operator-pending mappings in NORMAL and VISUAL mode
-	opleader = {
-		line = "q",
-	},
-	---LHS of extra mappings
-	extra = {
-		above = "gcO",
-		---Add comment on the line below
-		below = "gco",
-		---Add comment at the end of line
-		eol = "gcA",
-	},
-}
-
 vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>NoNeckPain<cr>", { silent = true, noremap = true })
-
-local comment_ft = require "Comment.ft"
-
-comment_ft.set("zig", "//%s")
 
 local t_builtin = require "telescope.builtin"
 -- File Picker

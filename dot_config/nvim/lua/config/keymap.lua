@@ -17,3 +17,6 @@ vim.keymap.set("n", "<A-l>", "<C-w>l")
 vim.keymap.set("n", "<Tab>", "<Cmd>bn<Cr>")
 vim.keymap.set("n", "<S-Tab>", "<Cmd>bp<Cr>")
 vim.keymap.set("n", "<leader>bd", "<Cmd>bdelete<Cr>")
+-- Comment
+vim.keymap.set("n", "q", "gcc", { remap = true })
+vim.keymap.set("v", "q", "gc", { remap = true })
