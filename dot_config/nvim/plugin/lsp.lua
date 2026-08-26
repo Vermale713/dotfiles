@@ -82,7 +82,7 @@ require("conform").setup {
 	},
 	formatters_by_ft = {
 		lua = { "stylua", lsp_format = "fallback" },
-		luau = { "larvae", lsp_format = "fallback" },
+		luau = { "larvae", "stylua", lsp_format = "fallback" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		zig = { "zigfmt", lsp_format = "fallback" },
 		toml = { "taplo", lsp_format = "fallback" },
