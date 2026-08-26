@@ -74,11 +74,15 @@ cmp.setup {
 
 require("conform").setup {
 	formatters_by_ft = {
-		lua = { "stylua" },
-		luau = { "stylua" },
+		lua = { "stylua", lsp_format = "fallback" },
+		luau = { "stylua", lsp_format = "fallback" },
 		rust = { "rustfmt", lsp_format = "fallback" },
-		zig = { "zigfmt" },
-		toml = { "taplo" },
+		zig = { "zigfmt", lsp_format = "fallback" },
+		toml = { "taplo", lsp_format = "fallback" },
+
+        default_format_opts = {
+            lsp_format = "fallback",
+        },
 	},
 }
 vim.keymap.set("n", "<leader>fa", function()
