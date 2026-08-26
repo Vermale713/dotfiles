@@ -73,16 +73,23 @@ cmp.setup {
 }
 
 require("conform").setup {
+	formatters = {
+		larvae = {
+			command = "larvae",
+			args = { "fmt", "--stdin", "--stdin-filepath", "$FILENAME" },
+			stdin = true,
+		},
+	},
 	formatters_by_ft = {
 		lua = { "stylua", lsp_format = "fallback" },
-		luau = { "stylua", lsp_format = "fallback" },
+		luau = { "larvae", lsp_format = "fallback" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		zig = { "zigfmt", lsp_format = "fallback" },
 		toml = { "taplo", lsp_format = "fallback" },
 
-        default_format_opts = {
-            lsp_format = "fallback",
-        },
+		default_format_opts = {
+			lsp_format = "fallback",
+		},
 	},
 }
 vim.keymap.set("n", "<leader>fa", function()
