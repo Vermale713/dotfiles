@@ -81,15 +81,20 @@ require("conform").setup {
 		},
 	},
 	formatters_by_ft = {
+		["_"] = {
+			lsp_format = "fallback",
+		},
+
 		lua = { "stylua", lsp_format = "fallback" },
 		luau = { "larvae", "stylua", lsp_format = "fallback" },
+		typescript = { "prettier", lsp_format = "fallback" },
+		javascript = { "prettier", lsp_format = "fallback" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		zig = { "zigfmt", lsp_format = "fallback" },
 		toml = { "taplo", lsp_format = "fallback" },
-
-		default_format_opts = {
-			lsp_format = "fallback",
-		},
+		json = { "jq", lsp_format = "fallback" },
+		just = { "just", lsp_format = "fallback" },
+		csharp = { "csharpier", lsp_format = "fallback" },
 	},
 }
 vim.keymap.set("n", "<leader>fa", function()

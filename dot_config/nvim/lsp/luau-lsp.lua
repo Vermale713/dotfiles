@@ -7,6 +7,7 @@ return {
 				"**/_Index/**",
 				"**/.pesde/**",
 				"**/.lpm/**",
+				"**/.ember/**",
 			},
 			fflags = {
 				enable_new_solver = true, -- enables the fflags required for luau's new type solver
@@ -34,6 +35,7 @@ return {
 						"**/_Index/**",
 						"**/.pesde/**",
                         "**/.lpm/**",
+                        "**/.ember/**",
 					},
 				},
 			},
