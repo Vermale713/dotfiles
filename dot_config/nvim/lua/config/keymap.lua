@@ -16,7 +16,18 @@ vim.keymap.set("n", "<A-l>", "<C-w>l")
 -- Buffers
 vim.keymap.set("n", "<Tab>", "<Cmd>bn<Cr>")
 vim.keymap.set("n", "<S-Tab>", "<Cmd>bp<Cr>")
-vim.keymap.set("n", "<leader>bd", "<Cmd>bdelete<Cr>")
+vim.keymap.set("n", "<leader>bd", function()
+	local currentBuffer = vim.api.nvim_get_current_buf()
+	local alternateBuffer = vim.fn.bufnr "#"
+
+	if alternateBuffer > 0 and vim.api.nvim_buf_is_valid(alternateBuffer) then
+		vim.cmd.buffer(alternateBuffer)
+	else
+		vim.cmd.enew()
+	end
+
+	vim.api.nvim_buf_delete(currentBuffer, {})
+end, { desc = "Delete buffer" })
 -- Comment
 vim.keymap.set("n", "q", "gcc", { remap = true })
 vim.keymap.set("v", "q", "gc", { remap = true })
