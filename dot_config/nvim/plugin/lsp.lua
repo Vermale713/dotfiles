@@ -1,5 +1,5 @@
--- TEMP: flip to true to bring luau-lsp.nvim back; while false, larvae-lsp owns luau
-local LUAU_LSP = false
+-- Flip to false to let larvae-lsp own luau alone; while true, both servers attach.
+local LUAU_LSP = true
 
 -- INSTALL PLUGINS
 vim.pack.add {
