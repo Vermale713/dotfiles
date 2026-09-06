@@ -1,9 +1,11 @@
+-- TEMP: flip to true to bring luau-lsp.nvim back; while false, larvae-lsp owns luau
+local LUAU_LSP = false
+
 -- INSTALL PLUGINS
 vim.pack.add {
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/lopi-py/luau-lsp.nvim" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	-- ROBLOX
 	{ src = "https://github.com/unsigned-rbx/vide-autocomplete.nvim" },
@@ -12,6 +14,10 @@ vim.pack.add {
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 }
+
+if LUAU_LSP then
+	vim.pack.add { { src = "https://github.com/lopi-py/luau-lsp.nvim" } }
+end
 
 -- SETUP PLUGINS
 local cmp = require "blink.cmp"
@@ -101,45 +107,47 @@ vim.keymap.set("n", "<leader>fa", function()
 	require("conform").format {}
 end)
 
-require("luau-lsp").setup {
-	fflags = {
-		enable_new_solver = true, -- enables the fflags required for luau's new type solver
-		sync = true, -- sync currently enabled fflags with roblox's published fflags
-	},
-	ft = "luau",
-	types = {
-		roblox_security_level = "PluginSecurity",
-	},
-	completion = {
-		-- 	enabled = true,
-		autocompleteEnd = true,
-		-- 	imports = {
-		-- 		enabled = true,
-		-- 		useConst = true,
-		-- 		suggestServices = true,
-		-- 		suggestRequires = true,
-		-- 		-- requireStyle = "auto",
-		-- 		requireStyle = "alwaysRelative",
-		-- 		-- requireStyle = "alwaysAbsolute",
-		--            stringRequires = true,
-		--            -- stringRequires = false,
-		-- 		separateGroupsWithLine = true,
-		-- 		ignoreGlobs = {
-		-- 			"**/_Index/**",
-		-- 			"**/.pesde/**",
-		-- 		},
-		-- 	},
-	},
-	sourcemap = {
-		-- based on https://argon.wiki/docs/commands/cli#sourcemap
-		enabled = true,
-		generator_cmd = { "argon", "sourcemap", "--output", "sourcemap.json", "--watch", "--non-scripts" },
-	},
-	plugin = {
-		enabled = true,
-		port = 3667,
-	},
-}
+if LUAU_LSP then
+	require("luau-lsp").setup {
+		fflags = {
+			enable_new_solver = true, -- enables the fflags required for luau's new type solver
+			sync = true, -- sync currently enabled fflags with roblox's published fflags
+		},
+		ft = "luau",
+		types = {
+			roblox_security_level = "PluginSecurity",
+		},
+		completion = {
+			-- 	enabled = true,
+			autocompleteEnd = true,
+			-- 	imports = {
+			-- 		enabled = true,
+			-- 		useConst = true,
+			-- 		suggestServices = true,
+			-- 		suggestRequires = true,
+			-- 		-- requireStyle = "auto",
+			-- 		requireStyle = "alwaysRelative",
+			-- 		-- requireStyle = "alwaysAbsolute",
+			--            stringRequires = true,
+			--            -- stringRequires = false,
+			-- 		separateGroupsWithLine = true,
+			-- 		ignoreGlobs = {
+			-- 			"**/_Index/**",
+			-- 			"**/.pesde/**",
+			-- 		},
+			-- 	},
+		},
+		sourcemap = {
+			-- based on https://argon.wiki/docs/commands/cli#sourcemap
+			enabled = true,
+			generator_cmd = { "argon", "sourcemap", "--output", "sourcemap.json", "--watch", "--non-scripts" },
+		},
+		plugin = {
+			enabled = true,
+			port = 3667,
+		},
+	}
+end
 
 require("mason").setup {}
 require("mason-lspconfig").setup {
@@ -147,3 +155,6 @@ require("mason-lspconfig").setup {
 		exclude = { "luau_lsp" },
 	},
 }
+
+-- LARVAE (second luau server, runs alongside luau-lsp)
+vim.lsp.enable "larvae"
