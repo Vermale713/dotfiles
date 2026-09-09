@@ -40,9 +40,11 @@ return {
 				},
 			},
 			sourcemap = {
-				-- based on https://argon.wiki/docs/commands/cli#sourcemap
 				enabled = true,
-				generator_cmd = { "argon", "sourcemap", "--output", "sourcemap.json", "--watch", "--non-scripts" },
+				-- the sourcemap is generated outside neovim; do not spawn a generator
+				autogenerate = false,
+				-- based on https://argon.wiki/docs/commands/cli#sourcemap
+				-- generator_cmd = { "argon", "sourcemap", "--output", "sourcemap.json", "--watch", "--non-scripts" },
 			},
 			plugin = {
 				enabled = true,
