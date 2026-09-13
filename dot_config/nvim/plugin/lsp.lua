@@ -158,5 +158,5 @@ require("mason-lspconfig").setup {
 	},
 }
 
--- LARVAE (second luau server, runs alongside luau-lsp)
+-- LARVAE (second luau server, runs alongside luau-lsp; completions disabled in lsp/larvae.lua)
 vim.lsp.enable "larvae"

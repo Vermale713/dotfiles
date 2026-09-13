@@ -11,4 +11,10 @@ return {
 	cmd = { cmd },
 	filetypes = { "luau" },
 	root_markers = { "larvae.toml", ".luaurc", "ember.toml", ".git" },
+	-- Both luau servers attach to luau buffers, which doubled every completion in
+	-- blink.cmp. Drop larvae's completion capability so luau-lsp owns suggestions;
+	-- larvae keeps serving diagnostics and the rest.
+	on_init = function(client)
+		client.server_capabilities.completionProvider = nil
+	end,
 }
