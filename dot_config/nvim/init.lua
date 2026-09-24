@@ -15,4 +15,3 @@ require "config.autocmd"
 require "config.cmds"
 require("config.lockin").setup()
 require("config.twitch").setup()
-
