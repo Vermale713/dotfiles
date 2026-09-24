@@ -30,6 +30,8 @@ vim.keymap.set("n", "<leader>bd", function()
 end, { desc = "Delete buffer" })
 -- Folds
 vim.keymap.set("n", "fs", "za", { desc = "Toggle fold" })
+vim.keymap.set("n", "fOa", "zR", { desc = "Open all folds" })
+vim.keymap.set("n", "fCa", "zM", { desc = "Close all folds" })
 -- Comment
 vim.keymap.set("n", "q", "gcc", { remap = true })
 vim.keymap.set("v", "q", "gc", { remap = true })
