@@ -5,8 +5,11 @@ vim.g.maplocalleader = "\\"
 vim.opt.clipboard = "unnamedplus"
 
 -- NEOVIM STUFF
+vim.bo.syntax = "on"
 vim.opt.autoread = true -- Auto reload buffer
 vim.opt.exrc = true -- Project local settings
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use Treesitter for folding
+vim.opt.foldtext = "" -- Syntax highlight first line of fold
 
 -- SHELL STUFF
 if sysname == "Windows_NT" then
