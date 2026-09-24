@@ -28,6 +28,8 @@ vim.keymap.set("n", "<leader>bd", function()
 
 	vim.api.nvim_buf_delete(currentBuffer, {})
 end, { desc = "Delete buffer" })
+-- Folds
+vim.keymap.set("n", "fs", "za", { desc = "Toggle fold" })
 -- Comment
 vim.keymap.set("n", "q", "gcc", { remap = true })
 vim.keymap.set("v", "q", "gc", { remap = true })
