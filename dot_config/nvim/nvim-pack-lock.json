@@ -83,6 +83,10 @@
     "vide-autocomplete.nvim": {
       "rev": "13e9bf3da3cbd34408a7de978af0b1d6b6fa578b",
       "src": "https://github.com/unsigned-rbx/vide-autocomplete.nvim"
+    },
+    "zen-mode.nvim": {
+      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
+      "src": "https://github.com/folke/zen-mode.nvim"
     }
   }
 }

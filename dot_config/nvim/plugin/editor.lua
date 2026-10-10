@@ -8,6 +8,8 @@ vim.pack.add {
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/shortcuts/no-neck-pain.nvim" },
+	{ src = "https://github.com/folke/zen-mode.nvim" },
+
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -34,6 +36,9 @@ require("no-neck-pain").setup {
 		},
 	},
 }
+
+local zen_mode = require "zen-mode"
+vim.keymap.set("n", "<leader>z", zen_mode.toggle, { desc = "Toggle Zen Mode" })
 
 require("onedark").setup {
 	style = "deep",
