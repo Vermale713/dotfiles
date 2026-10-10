@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "Comment.nvim": {
-      "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
-      "src": "https://github.com/numToStr/Comment.nvim"
-    },
     "alabaster.nvim": {
       "rev": "b902c73fabefc13583bfc0c18b28950ea8f6244f",
       "src": "https://github.com/dchinmay2/alabaster.nvim"
@@ -27,6 +23,10 @@
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "focus.nvim": {
+      "rev": "36ebedeebe82ebea250c9d671769194caa033902",
+      "src": "https://github.com/nvim-focus/focus.nvim"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
@@ -83,10 +83,6 @@
     "vide-autocomplete.nvim": {
       "rev": "13e9bf3da3cbd34408a7de978af0b1d6b6fa578b",
       "src": "https://github.com/unsigned-rbx/vide-autocomplete.nvim"
-    },
-    "zen-mode.nvim": {
-      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
-      "src": "https://github.com/folke/zen-mode.nvim"
     }
   }
 }

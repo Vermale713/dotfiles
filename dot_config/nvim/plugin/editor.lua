@@ -8,7 +8,7 @@ vim.pack.add {
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/shortcuts/no-neck-pain.nvim" },
-	{ src = "https://github.com/folke/zen-mode.nvim" },
+	{ src = "https://github.com/nvim-focus/focus.nvim" },
 
 	-- TODO: replace plenary sometime
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -37,7 +37,23 @@ require("no-neck-pain").setup {
 	},
 }
 
-vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
+require("focus").setup {
+	ui = {
+		number = true, -- Display line numbers in the focussed window only
+		relativenumber = true, -- Display relative line numbers in the focussed window only
+		hybridnumber = true, -- Display hybrid line numbers in the focussed window only
+		absolutenumber_unfocussed = true, -- Preserve absolute numbers in the unfocussed windows
+
+		cursorline = true, -- Display a cursorline in the focussed window only
+		cursorcolumn = false, -- Display cursorcolumn in the focussed window only
+		colorcolumn = {
+			enable = false, -- Display colorcolumn in the foccused window only
+			list = "+1", -- Set the comma-saperated list for the colorcolumn
+		},
+		signcolumn = true, -- Display signcolumn in the focussed window only
+		winhighlight = false, -- Auto highlighting for focussed/unfocussed windows
+	},
+}
 
 require("onedark").setup {
 	style = "deep",
