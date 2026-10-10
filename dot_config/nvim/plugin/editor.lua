@@ -37,8 +37,7 @@ require("no-neck-pain").setup {
 	},
 }
 
-local zen_mode = require "zen-mode"
-vim.keymap.set("n", "<leader>z", zen_mode.toggle, { desc = "Toggle Zen Mode" })
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
 
 require("onedark").setup {
 	style = "deep",
