@@ -1,4 +1,4 @@
--- Flip to false to let larvae-lsp own luau alone; while true, both servers attach.
+-- Flip to false to let larvae own luau alone; while true, both servers attach.
 local LUAU_LSP = true
 
 -- INSTALL PLUGINS
@@ -13,6 +13,7 @@ vim.pack.add {
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/obsidian-nvim/obsidian.nvim", version = vim.version.range "*" },
 }
 
 if LUAU_LSP then
@@ -77,6 +78,49 @@ cmp.setup {
 
 	fuzzy = { implementation = "rust" },
 }
+
+require("obsidian").setup {
+	legacy_commands = false, -- this will be removed in 4.0.0
+	picker = {
+		name = "telescope.nvim",
+	},
+	conceallevel = 2,
+	workspaces = {
+		{
+			name = "personal",
+			path = "~/notes",
+		},
+	},
+	templates = {
+		folder = "Templates",
+	},
+	file = {
+		ignore_filters = {
+			"Templates",
+			"Templates/**",
+		},
+	},
+
+	open = {
+		func = function(uri)
+			vim.ui.open(uri, { cmd = { "wsl-open" } })
+		end,
+	},
+}
+
+local obsidian = {
+	{ "<leader>of", "<Cmd>Obsidian quick_switch<CR>", desc = "Obsidian quick switch" },
+	{ "<leader>os", "<Cmd>Obsidian search<CR>", desc = "Obsidian search" },
+	{ "<leader>on", "<Cmd>Obsidian new<CR>", desc = "Obsidian new note" },
+	{ "<leader>ot", "<Cmd>Obsidian template<CR>", desc = "Obsidian template" },
+	{ "<leader>oy", "<Cmd>Obsidian today<CR>", desc = "Obsidian today's note" },
+	{ "<leader>ob", "<Cmd>Obsidian backlinks<CR>", desc = "Obsidian backlinks" },
+	{ "<leader>oo", "<Cmd>Obsidian open<CR>", desc = "Open in Obsidian app" },
+}
+for _, mapping in ipairs(obsidian) do
+	vim.keymap.set("n", mapping[1], mapping[2], { desc = mapping.desc })
+end
+vim.opt.conceallevel = 1
 
 require("conform").setup {
 	formatters = {
