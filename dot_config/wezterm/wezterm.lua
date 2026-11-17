@@ -61,7 +61,7 @@ config.foreground_text_hsb = {
 config.background = {
 	{
 		source = { File = { path = "C:/Users/someuserboi/Pictures/Backgrounds/theone.gif", speed = 0.2 } },
-		opacity = 1,
+		opaci = 1,
 		width = "100%",
 		hsb = { brightness = 0.5 },
 	},
@@ -72,6 +72,12 @@ wezterm.on("gui-startup", function()
 	window:gui_window():maximize()
 end)
 
-config.default_domain = "WSL:FedoraLinux-44"
+config.default_domain = "WSL:FedoraLinux-45"
+config.wsl_domains = {
+	{
+		name = 'WSL:FedoraLinux-45',
+		distribution = 'FedoraLinux-45',
+	}
+}
 
 return config
