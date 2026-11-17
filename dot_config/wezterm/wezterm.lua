@@ -57,16 +57,6 @@ config.foreground_text_hsb = {
 	brightness = 1.5,
 }
 
--- This is used to set an image as my background
-config.background = {
-	{
-		source = { File = { path = "C:/Users/someuserboi/Pictures/Backgrounds/theone.gif", speed = 0.2 } },
-		opaci = 1,
-		width = "100%",
-		hsb = { brightness = 0.5 },
-	},
-}
-
 wezterm.on("gui-startup", function()
 	local _, _, window = mux.spawn_window({})
 	window:gui_window():maximize()
@@ -77,6 +67,8 @@ config.wsl_domains = {
 	{
 		name = 'WSL:FedoraLinux-45',
 		distribution = 'FedoraLinux-45',
+
+        default_cwd = "~"
 	}
 }
 
